@@ -75,6 +75,10 @@ input[type=text]{
     border: 1px solid #ddd;
 }
 
+input[type=password]{
+    border: 1px solid #ddd;
+}
+
 input[name=year]{
     width: 50px;
 }
