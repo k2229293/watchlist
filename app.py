@@ -21,11 +21,21 @@ class Movie(db.Model):
 def index():
     name = User.query.first()
     movies = Movie.query.all()
-    return render_template("index.html",name=name,movies=movies)
+    return render_template("index.html",movies=movies)
 
 @app.route('/usr/<name>')
 def user(name):
     return "welcome~!%s"%name
+
+@app.errorhandler(404)
+def page_not_found(e):
+    user = User.query.first()
+    return render_template('404.html'),404
+
+@app.context_processor
+def inject_user():
+    user = User.query.first()
+    return dict(user=user)
 
 @app.cli.command()
 def forge():
